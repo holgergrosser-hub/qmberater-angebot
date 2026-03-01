@@ -74,23 +74,6 @@ const NORM_PRICING_BY_COUNT = {
 
 
 export default function App() {
-  const isEmbed = (() => {
-    try {
-      const params = new URLSearchParams(window.location.search);
-      const embedParam = params.get('embed');
-      if (embedParam === '1' || embedParam === 'true') return true;
-    } catch (_) {
-      // ignore
-    }
-
-    try {
-      return window.self !== window.top;
-    } catch (_) {
-      // Cross-origin iframes can throw; treat as embedded.
-      return true;
-    }
-  })();
-
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [formData, setFormData] = useState({
     firma: '',
@@ -349,208 +332,11 @@ export default function App() {
       `}</style>
       
       <div style={{
-        minHeight: isEmbed ? 'auto' : '100vh',
-        background: isEmbed ? 'transparent' : `linear-gradient(135deg, ${BRAND.primary} 0%, ${BRAND.heading} 100%)`,
-        padding: isEmbed ? 0 : 'clamp(18px, 5vw, 54px) clamp(12px, 4vw, 20px)'
+        minHeight: 'auto',
+        background: 'transparent',
+        padding: 0
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-
-          {/* Top bar - SOLID WHITE - STICKY */}
-          {!isEmbed && (
-            <div
-              data-topbar="true"
-              style={{
-                position: 'sticky',
-                top: 0,
-                zIndex: 50,
-                background: 'white',
-                paddingTop: '12px',
-                paddingBottom: '12px',
-                marginLeft: 'calc(-1 * clamp(12px, 4vw, 20px))',
-                marginRight: 'calc(-1 * clamp(12px, 4vw, 20px))',
-                paddingLeft: 'clamp(12px, 4vw, 20px)',
-                paddingRight: 'clamp(12px, 4vw, 20px)',
-                boxShadow: '0 2px 8px rgba(16, 41, 66, 0.08)',
-                marginBottom: '0'
-              }}
-            >
-              <div style={{
-                maxWidth: '1200px',
-                margin: '0 auto',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                gap: '12px'
-              }}>
-                <a href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-                  <div style={{
-                    fontWeight: 900,
-                    color: BRAND.heading,
-                    letterSpacing: '0.01em',
-                    fontSize: '16px'
-                  }}>
-                    QMberater.info
-                  </div>
-                </a>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
-                  <a
-                    href="#pakete"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection('pakete');
-                    }}
-                    style={{
-                      textDecoration: 'none',
-                      color: BRAND.heading,
-                      fontWeight: 800,
-                      fontSize: '13px',
-                      padding: '10px 14px',
-                      borderRadius: '999px',
-                      background: BRAND.accent500,
-                      border: `1px solid ${BRAND.accent500}`
-                    }}
-                  >
-                    Angebot anfordern
-                  </a>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Progress Indicator - STICKY & OPAQUE */}
-          {!isEmbed && (
-            <div style={{
-              position: 'sticky',
-              top: '54px',
-              zIndex: 40,
-              background: BRAND.primary,
-              borderRadius: '0',
-              padding: '20px',
-              marginBottom: '40px',
-              marginTop: '0',
-              boxShadow: '0 4px 12px rgba(16, 41, 66, 0.15)',
-              marginLeft: 'calc(-1 * clamp(12px, 4vw, 20px))',
-              marginRight: 'calc(-1 * clamp(12px, 4vw, 20px))',
-              paddingLeft: 'clamp(12px, 4vw, 20px)',
-              paddingRight: 'clamp(12px, 4vw, 20px)'
-            }}>
-              <div style={{
-                maxWidth: '1200px',
-                margin: '0 auto',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '12px',
-                flexWrap: 'wrap'
-              }}>
-              {/* Step 1 - Paket wählen */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div style={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '50%',
-                  background: selectedPackage ? '#48bb78' : 'rgba(255,255,255,0.2)',
-                  color: selectedPackage ? 'white' : 'rgba(255,255,255,0.6)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontWeight: '800',
-                  fontSize: '16px',
-                  transition: 'all 0.3s'
-                }}>
-                  {selectedPackage ? <CheckCircle2 size={20} /> : '1'}
-                </div>
-                <span style={{ 
-                  color: selectedPackage ? 'white' : 'rgba(255,255,255,0.6)', 
-                  fontWeight: selectedPackage ? '800' : '600', 
-                  fontSize: '14px' 
-                }}>
-                  Paket wählen
-                </span>
-              </div>
-
-              {/* Divider */}
-              <div style={{
-                width: '60px',
-                height: '2px',
-                background: selectedPackage ? '#48bb78' : 'rgba(255,255,255,0.3)',
-                transition: 'all 0.3s'
-              }} />
-
-              {/* Step 2 - Formular ausfüllen */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div style={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '50%',
-                  background: isFormComplete ? '#48bb78' : 'rgba(255,255,255,0.2)',
-                  color: isFormComplete ? 'white' : 'rgba(255,255,255,0.6)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontWeight: '800',
-                  fontSize: '16px',
-                  transition: 'all 0.3s'
-                }}>
-                  {isFormComplete ? <CheckCircle2 size={20} /> : '2'}
-                </div>
-                <span style={{ 
-                  color: isFormComplete ? 'white' : 'rgba(255,255,255,0.6)', 
-                  fontWeight: isFormComplete ? '800' : '600', 
-                  fontSize: '14px' 
-                }}>
-                  Formular ausfüllen
-                </span>
-              </div>
-
-              {/* Divider */}
-              <div style={{
-                width: '60px',
-                height: '2px',
-                background: isFormComplete ? '#48bb78' : 'rgba(255,255,255,0.3)',
-                transition: 'all 0.3s'
-              }} />
-
-              {/* Step 3 - Angebot erhalten */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div style={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '50%',
-                  background: status === 'success' ? '#48bb78' : 'rgba(255,255,255,0.2)',
-                  color: status === 'success' ? 'white' : 'rgba(255,255,255,0.6)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontWeight: '800',
-                  fontSize: '16px',
-                  transition: 'all 0.3s'
-                }}>
-                  {status === 'success' ? <CheckCircle2 size={20} /> : '3'}
-                </div>
-                <span style={{ 
-                  color: status === 'success' ? 'white' : 'rgba(255,255,255,0.6)', 
-                  fontWeight: status === 'success' ? '800' : '600', 
-                  fontSize: '14px' 
-                }}>
-                  Angebot erhalten
-                </span>
-              </div>
-            </div>
-            </div>
-          )}
-          
-          {/* Header */}
-          {!isEmbed && (
-            <div style={{ textAlign: 'center', marginBottom: '60px', color: 'white' }}>
-              <h1 style={{ fontSize: 'clamp(30px, 5vw, 48px)', fontWeight: '700', marginBottom: '16px', lineHeight: '1.15' }}>
-                QM-System aufbauen – Angebot in 3 Schritten
-              </h1>
-              <p style={{ fontSize: 'clamp(14px, 2.2vw, 20px)', opacity: 0.95, maxWidth: '1000px', margin: '0 auto', padding: '0 12px' }}>
-                Paket wählen • Unternehmensdaten eingeben • Beratungsangebot als PDF erhalten
-              </p>
-            </div>
-          )}
 
           {/* Package Cards */}
           <div id="pakete" style={{ marginBottom: '60px' }}>
@@ -1003,18 +789,6 @@ export default function App() {
           </div>
 
           {/* Footer */}
-          {!isEmbed && (
-            <div style={{ textAlign: 'center', marginTop: '60px', color: 'white', fontSize: '14px', opacity: 0.9 }}>
-              <p style={{ margin: '0 0 8px 0' }}>
-                <strong>QMberater.info</strong>
-              </p>
-              <p style={{ margin: '10px 0 0 0', fontSize: '13px' }}>
-                <a href="/impressum" style={{ color: 'rgba(255,255,255,0.92)', textDecoration: 'underline' }}>Impressum</a>
-                {' '}|{' '}
-                <a href="/datenschutz" style={{ color: 'rgba(255,255,255,0.92)', textDecoration: 'underline' }}>Datenschutz</a>
-              </p>
-            </div>
-          )}
 
         </div>
       </div>
