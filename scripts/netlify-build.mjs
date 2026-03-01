@@ -52,12 +52,8 @@ async function buildOffers() {
   // Build the SPA into dist/
   run('npm', ['run', 'build:offers']);
 
-  // Per-site redirects: prevent duplicate ISO landing under the offers domain, and keep SPA fallback.
-  const redirects = [
-    '/iso-9001-berater-kosten/* https://iso-9001-berater-kosten.qm-guru.de/:splat 301!',
-    '/iso-9001-berater-kosten https://iso-9001-berater-kosten.qm-guru.de/ 301!',
-    '/* /index.html 200'
-  ].join('\n');
+  // SPA fallback
+  const redirects = ['/* /index.html 200'].join('\n');
 
   await fs.writeFile(path.join(distDir, '_redirects'), `${redirects}\n`, 'utf8');
 }

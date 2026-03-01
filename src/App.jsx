@@ -13,8 +13,8 @@ const PACKAGES = [
     basePrice: 3500,
     hours: '20-30',
     features: [
-      'Perfekt für Ein-Personen-Betriebe und kleine Partnerschaften',
-      'Kompakte Dokumentation – schnell umsetzbar'
+      'QM-System-Grundstruktur (Prozesse & Dokumentation) – schnell umsetzbar',
+      'Ideal für Ein-Personen-Betriebe und kleine Partnerschaften'
     ],
     accent: '#03468f',
     popular: false
@@ -26,8 +26,8 @@ const PACKAGES = [
     basePrice: 4500,
     hours: '30-40',
     features: [
-      'Klare Rollen und Verantwortlichkeiten',
-      'Skalierbare Prozesse für weiteres Wachstum'
+      'Aufbau QM-System inkl. Rollen, Verantwortlichkeiten & Kernprozesse',
+      'Skalierbare Struktur für weiteres Wachstum'
     ],
     accent: '#c9a027',
     popular: false
@@ -39,8 +39,8 @@ const PACKAGES = [
     basePrice: 7500,
     hours: '40-70',
     features: [
-      'Mehrere Prozess-Ebenen professionell dokumentiert',
-      'Abteilungsübergreifende Koordination'
+      'QM-System mit mehreren Prozess-Ebenen professionell dokumentiert',
+      'Abteilungsübergreifende Abstimmung & Umsetzung'
     ],
     accent: '#102942',
     popular: false
@@ -52,8 +52,8 @@ const PACKAGES = [
     basePrice: 12000,
     hours: '70-90',
     features: [
-      'Mehrere Standorte oder Geschäftsbereiche',
-      'Umfangreiches Stakeholder-Management'
+      'QM-System-Aufbau für mehrere Standorte oder Geschäftsbereiche',
+      'Koordination vieler Stakeholder & Schnittstellen'
     ],
     accent: '#03468f',
     popular: false
@@ -74,6 +74,23 @@ const NORM_PRICING_BY_COUNT = {
 
 
 export default function App() {
+  const isEmbed = (() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const embedParam = params.get('embed');
+      if (embedParam === '1' || embedParam === 'true') return true;
+    } catch (_) {
+      // ignore
+    }
+
+    try {
+      return window.self !== window.top;
+    } catch (_) {
+      // Cross-origin iframes can throw; treat as embedded.
+      return true;
+    }
+  })();
+
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [formData, setFormData] = useState({
     firma: '',
@@ -331,113 +348,101 @@ export default function App() {
         }
       `}</style>
       
-      <div style={{ minHeight: '100vh', background: `linear-gradient(135deg, ${BRAND.primary} 0%, ${BRAND.heading} 100%)`, padding: 'clamp(18px, 5vw, 54px) clamp(12px, 4vw, 20px)' }}>
+      <div style={{
+        minHeight: isEmbed ? 'auto' : '100vh',
+        background: isEmbed ? 'transparent' : `linear-gradient(135deg, ${BRAND.primary} 0%, ${BRAND.heading} 100%)`,
+        padding: isEmbed ? 0 : 'clamp(18px, 5vw, 54px) clamp(12px, 4vw, 20px)'
+      }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
 
           {/* Top bar - SOLID WHITE - STICKY */}
-          <div style={{
-            position: 'sticky',
-            top: 0,
-            zIndex: 50,
-            background: 'white',
-            paddingTop: '12px',
-            paddingBottom: '12px',
-            marginLeft: 'calc(-1 * clamp(12px, 4vw, 20px))',
-            marginRight: 'calc(-1 * clamp(12px, 4vw, 20px))',
-            paddingLeft: 'clamp(12px, 4vw, 20px)',
-            paddingRight: 'clamp(12px, 4vw, 20px)',
-            boxShadow: '0 2px 8px rgba(16, 41, 66, 0.08)',
-            marginBottom: '0'
-          }}>
-            <div style={{
-              maxWidth: '1200px',
-              margin: '0 auto',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: '12px'
-            }}>
-              <a href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-                <img src="/qm-guru-logo-v1.svg" alt="QM-Guru" style={{ height: '30px', width: 'auto', display: 'block' }} />
-              </a>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
-                <a
-                  href="#pakete"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection('pakete');
-                  }}
-                  style={{
-                    textDecoration: 'none',
+          {!isEmbed && (
+            <div
+              data-topbar="true"
+              style={{
+                position: 'sticky',
+                top: 0,
+                zIndex: 50,
+                background: 'white',
+                paddingTop: '12px',
+                paddingBottom: '12px',
+                marginLeft: 'calc(-1 * clamp(12px, 4vw, 20px))',
+                marginRight: 'calc(-1 * clamp(12px, 4vw, 20px))',
+                paddingLeft: 'clamp(12px, 4vw, 20px)',
+                paddingRight: 'clamp(12px, 4vw, 20px)',
+                boxShadow: '0 2px 8px rgba(16, 41, 66, 0.08)',
+                marginBottom: '0'
+              }}
+            >
+              <div style={{
+                maxWidth: '1200px',
+                margin: '0 auto',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '12px'
+              }}>
+                <a href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+                  <div style={{
+                    fontWeight: 900,
                     color: BRAND.heading,
-                    fontWeight: 800,
-                    fontSize: '13px',
-                    padding: '10px 14px',
-                    borderRadius: '999px',
-                    background: BRAND.accent500,
-                    border: `1px solid ${BRAND.accent500}`
-                  }}
-                >
-                  Beratungsangebot anfordern
+                    letterSpacing: '0.01em',
+                    fontSize: '16px'
+                  }}>
+                    QMberater.info
+                  </div>
                 </a>
-                <a
-                  href="https://iso-9001-berater-kosten.qm-guru.de/"
-                  style={{
-                    textDecoration: 'none',
-                    color: BRAND.heading,
-                    fontWeight: 700,
-                    fontSize: '13px',
-                    padding: '10px 12px',
-                    borderRadius: '999px',
-                    background: 'rgba(16, 41, 66, 0.08)',
-                    border: '1px solid rgba(16, 41, 66, 0.14)'
-                  }}
-                >
-                  ISO 9001 Leitfaden
-                </a>
-                <a
-                  href="tel:+4991149522541"
-                  style={{
-                    textDecoration: 'none',
-                    color: 'white',
-                    fontWeight: 800,
-                    fontSize: '13px',
-                    padding: '10px 14px',
-                    borderRadius: '999px',
-                    background: BRAND.primary
-                  }}
-                >
-                  0911-49522541
-                </a>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+                  <a
+                    href="#pakete"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection('pakete');
+                    }}
+                    style={{
+                      textDecoration: 'none',
+                      color: BRAND.heading,
+                      fontWeight: 800,
+                      fontSize: '13px',
+                      padding: '10px 14px',
+                      borderRadius: '999px',
+                      background: BRAND.accent500,
+                      border: `1px solid ${BRAND.accent500}`
+                    }}
+                  >
+                    Angebot anfordern
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
+          )}
 
           {/* Progress Indicator - STICKY & OPAQUE */}
-          <div style={{
-            position: 'sticky',
-            top: '54px',
-            zIndex: 40,
-            background: BRAND.primary,
-            borderRadius: '0',
-            padding: '20px',
-            marginBottom: '40px',
-            marginTop: '0',
-            boxShadow: '0 4px 12px rgba(16, 41, 66, 0.15)',
-            marginLeft: 'calc(-1 * clamp(12px, 4vw, 20px))',
-            marginRight: 'calc(-1 * clamp(12px, 4vw, 20px))',
-            paddingLeft: 'clamp(12px, 4vw, 20px)',
-            paddingRight: 'clamp(12px, 4vw, 20px)'
-          }}>
-            <div style={{ 
-              maxWidth: '1200px',
-              margin: '0 auto',
-              display: 'flex', 
-              alignItems: 'center', 
-              justifyContent: 'center', 
-              gap: '12px', 
-              flexWrap: 'wrap' 
+          {!isEmbed && (
+            <div style={{
+              position: 'sticky',
+              top: '54px',
+              zIndex: 40,
+              background: BRAND.primary,
+              borderRadius: '0',
+              padding: '20px',
+              marginBottom: '40px',
+              marginTop: '0',
+              boxShadow: '0 4px 12px rgba(16, 41, 66, 0.15)',
+              marginLeft: 'calc(-1 * clamp(12px, 4vw, 20px))',
+              marginRight: 'calc(-1 * clamp(12px, 4vw, 20px))',
+              paddingLeft: 'clamp(12px, 4vw, 20px)',
+              paddingRight: 'clamp(12px, 4vw, 20px)'
             }}>
+              <div style={{
+                maxWidth: '1200px',
+                margin: '0 auto',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '12px',
+                flexWrap: 'wrap'
+              }}>
               {/* Step 1 - Paket wählen */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <div style={{
@@ -532,93 +537,28 @@ export default function App() {
                 </span>
               </div>
             </div>
-          </div>
+            </div>
+          )}
           
           {/* Header */}
-          <div style={{ textAlign: 'center', marginBottom: '60px', color: 'white' }}>
-            <h1 style={{ fontSize: 'clamp(30px, 5vw, 48px)', fontWeight: '700', marginBottom: '16px', lineHeight: '1.15' }}>
-              🎯 Ihr individuelles ISO-Angebot
-            </h1>
-            <p style={{ fontSize: 'clamp(14px, 2.2vw, 20px)', opacity: 0.95, maxWidth: '1000px', margin: '0 auto', padding: '0 12px' }}>
-              ISO-Beratung seit 1994 • transparent • praxisnah
-            </p>
-          </div>
-
-          {/* Trust Section */}
-          <div style={{ 
-            background: 'white', 
-            borderRadius: '16px', 
-            padding: 'clamp(18px, 4vw, 32px)', 
-            marginBottom: '40px',
-            boxShadow: BRAND.shadow,
-            display: 'flex',
-            alignItems: 'center',
-            gap: '32px',
-            flexWrap: 'wrap'
-          }}>
-            <img 
-              src="https://qm-guru.de/wp-content/uploads/holger-grosser-qm-guru-web-1024x977.webp"
-              alt="Holger Grosser"
-              style={{ 
-                width: '120px', 
-                height: '120px', 
-                borderRadius: '50%', 
-                objectFit: 'cover',
-                border: `4px solid ${BRAND.primary}`
-              }}
-            />
-            <div style={{ flex: 1 }}>
-              <h3 style={{ fontSize: '24px', fontWeight: '800', marginBottom: '8px', color: BRAND.heading }}>
-                Holger Grosser
-              </h3>
-              <p style={{ fontSize: '16px', color: BRAND.text, marginBottom: '16px' }}>
-                Der QM-Guru aus Fürth
+          {!isEmbed && (
+            <div style={{ textAlign: 'center', marginBottom: '60px', color: 'white' }}>
+              <h1 style={{ fontSize: 'clamp(30px, 5vw, 48px)', fontWeight: '700', marginBottom: '16px', lineHeight: '1.15' }}>
+                QM-System aufbauen – Angebot in 3 Schritten
+              </h1>
+              <p style={{ fontSize: 'clamp(14px, 2.2vw, 20px)', opacity: 0.95, maxWidth: '1000px', margin: '0 auto', padding: '0 12px' }}>
+                Paket wählen • Unternehmensdaten eingeben • Beratungsangebot als PDF erhalten
               </p>
-              <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                <span style={{ background: BRAND.accent200, padding: '6px 14px', borderRadius: '20px', fontSize: '13px', fontWeight: '700', color: BRAND.heading, border: `1px solid ${BRAND.accent500}` }}>
-                  ✓ Erfahrung seit 1994
-                </span>
-                <span style={{ background: 'rgba(3, 70, 143, 0.08)', padding: '6px 14px', borderRadius: '20px', fontSize: '13px', fontWeight: '700', color: BRAND.primary }}>
-                  ✓ Klare Pakete
-                </span>
-                <span style={{ background: 'rgba(16, 41, 66, 0.08)', padding: '6px 14px', borderRadius: '20px', fontSize: '13px', fontWeight: '700', color: BRAND.heading }}>
-                  ✓ Angebot als PDF per E-Mail
-                </span>
-              </div>
             </div>
-          </div>
-
-          {/* Pay After Certification */}
-          <div style={{
-            background: 'white',
-            borderRadius: '16px',
-            padding: '28px',
-            marginBottom: '40px',
-            boxShadow: '0 10px 40px rgba(16, 41, 66, 0.10)'
-          }}>
-            <div style={{
-              border: '2px solid rgba(16, 41, 66, 0.12)',
-              borderRadius: '14px',
-              padding: '20px',
-              background: `linear-gradient(135deg, ${BRAND.accent200} 0%, rgba(253, 249, 243, 1) 100%)`,
-              color: BRAND.heading
-            }}>
-              <div style={{ fontSize: '16px', fontWeight: '800', marginBottom: '10px' }}>
-                💰 SIE ZAHLEN ERST, WENN SIE ZERTIFIZIERT SIND
-              </div>
-              <div style={{ fontSize: '14px', lineHeight: '1.8' }}>
-                Kein Risiko. Kein Vorschuss. Keine Anzahlung. Ich arbeite – Sie bekommen das Zertifikat – DANN bezahlen Sie. Warum? Weil ich weiß, dass es funktioniert. 1.000+ Audits. Seit 1994.
-              </div>
-            </div>
-          </div>
+          )}
 
           {/* Package Cards */}
           <div id="pakete" style={{ marginBottom: '60px' }}>
             <h2 style={{ fontSize: '32px', fontWeight: '800', textAlign: 'center', marginBottom: '18px', color: 'white' }}>
-              Wählen Sie Ihr passendes Paket
+              Wählen Sie Ihr Paket für den QM-System-Aufbau
             </h2>
             <div style={{ textAlign: 'center', color: 'rgba(255,255,255,0.92)', fontSize: '14px', marginBottom: '22px' }}>
-              Preis & Stunden passen sich automatisch an (je nach Normen).
+              Preis & Projektstunden passen sich automatisch an (je nach Normen).
             </div>
             <div style={{ 
               display: 'grid', 
@@ -807,6 +747,9 @@ export default function App() {
                 <div style={{ fontSize: '12px', color: BRAND.text, marginTop: '8px' }}>
                   Normen: <strong>{normsText}</strong>
                 </div>
+                <div style={{ fontSize: '12px', color: BRAND.text, opacity: 0.9, marginTop: '8px' }}>
+                  Fokus: Aufbau & Umsetzung Ihres QM-Systems (Dokumentation + Prozesse)
+                </div>
                 {getNormCount() > 1 && (
                   <div style={{ fontSize: '12px', color: BRAND.primary, marginTop: '8px', fontWeight: '800' }}>
                     Mehrere Normen gewählt (Zuschlag berücksichtigt)
@@ -866,7 +809,7 @@ export default function App() {
                   className="qm-field"
                 />
                 <div style={{ fontSize: '12px', color: BRAND.text, opacity: 0.82, marginTop: '4px' }}>
-                  Hier wird Ihnen das <strong>Beratungsangebot</strong> als PDF zugesendet
+                  Hier erhalten Sie Ihr <strong>Beratungsangebot</strong> als PDF (QM-System-Aufbau)
                 </div>
               </div>
 
@@ -881,7 +824,7 @@ export default function App() {
                   name="telefon"
                   value={formData.telefon}
                   onChange={handleChange}
-                  placeholder="z.B. 0911-49522541"
+                  placeholder="z.B. +49 911 123456"
                   className="qm-field"
                 />
               </div>
@@ -1032,7 +975,7 @@ export default function App() {
                 {status === 'idle' && (
                   <>
                     <Send size={20} />
-                    Beratungsangebot anfordern (PDF per E-Mail)
+                    Beratungsangebot anfordern (QM-System-Aufbau, PDF per E-Mail)
                   </>
                 )}
                 {status === 'error' && '❌ Fehler beim Versenden'}
@@ -1052,89 +995,26 @@ export default function App() {
                   </div>
                   <div style={{ fontSize: '14px', color: BRAND.text, lineHeight: '1.8' }}>
                     📧 Das PDF-Angebot wird in Kürze an <strong>{formData.email}</strong> gesendet.<br/>
-                    💡 Absender: Holger.Grosser@iso9001.info • Bitte Spam-Ordner prüfen.<br/>
-                    ☎️ Wenn nach 5 Minuten nichts ankommt: <a href="tel:+4991149522541" style={{ color: BRAND.primary, fontWeight: 900, textDecoration: 'none' }}>0911-49522541</a>
+                    💡 Bitte Spam-Ordner prüfen.
                   </div>
                 </div>
               )}
-
-              {/* Info Box */}
-              <div style={{
-                background: `linear-gradient(135deg, ${BRAND.bg} 0%, ${BRAND.accent200} 100%)`,
-                borderLeft: `4px solid ${BRAND.primary}`,
-                borderRadius: '8px',
-                padding: '16px',
-                marginTop: '24px',
-                fontSize: '13px',
-                color: BRAND.heading,
-                lineHeight: '1.6'
-              }}>
-                <strong>💡 Automatische E-Mail-Nachverfolgung:</strong> Nach Ihrer Anfrage erhalten Sie automatisch:
-                <ul style={{ margin: '8px 0 0 20px', padding: 0 }}>
-                  <li>Tag 0: Ihr persönliches Angebot als PDF</li>
-                  <li>Tag 7: Erste Erinnerung mit zusätzlichen Informationen</li>
-                  <li>Tag 14: Zweite Erinnerung mit Details zum Ablauf</li>
-                  <li>Tag 30: Finale Nachfrage</li>
-                </ul>
-              </div>
             </form>
           </div>
 
-          {/* Guide teaser */}
-          <div style={{
-            marginTop: '40px',
-            background: 'rgba(255,255,255,0.92)',
-            borderRadius: '16px',
-            padding: '24px',
-            marginBottom: '40px',
-            border: `1px solid rgba(255,255,255,0.35)`
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap' }}>
-              <div>
-                <div style={{ fontSize: '12px', fontWeight: 800, color: BRAND.primary, letterSpacing: '0.02em', marginBottom: '6px' }}>
-                  ISO 9001 Berater Kosten 2026
-                </div>
-                <div style={{ fontSize: '20px', fontWeight: 900, color: BRAND.heading, marginBottom: '6px' }}>
-                  Der komplette Leitfaden (inkl. Kostenrechner)
-                </div>
-                <div style={{ fontSize: '14px', color: BRAND.text, opacity: 0.95 }}>
-                  Wenn Sie vorab vergleichen möchten: Stundensatz/Tagessatz, Eigenleistung vs. Berater und alle Details zur Kostenstruktur.
-                </div>
-              </div>
-              <a
-                href="https://iso-9001-berater-kosten.qm-guru.de/#kontakt"
-                style={{
-                  textDecoration: 'none',
-                  background: 'rgba(16, 41, 66, 0.10)',
-                  color: BRAND.heading,
-                  fontWeight: 900,
-                  padding: '12px 16px',
-                  borderRadius: '12px',
-                  border: '1px solid rgba(16, 41, 66, 0.12)'
-                }}
-              >
-                Zum Leitfaden
-              </a>
-            </div>
-          </div>
-
           {/* Footer */}
-          <div style={{ textAlign: 'center', marginTop: '60px', color: 'white', fontSize: '14px', opacity: 0.9 }}>
-            <p style={{ margin: '0 0 8px 0' }}>
-              <strong>QM-Guru | Holger Grosser</strong>
-            </p>
-            <p style={{ margin: '0 0 8px 0' }}>
-              Simonstr. 14 | 90763 Fürth
-            </p>
-            <p style={{ margin: '0' }}>
-              Tel. 0911-49522541 | Holger.Grosser@iso9001.info
-            </p>
-            <p style={{ margin: '10px 0 0 0', fontSize: '13px' }}>
-              <a href="https://qm-guru.de/sonstiges/impressum/" target="_blank" rel="noopener" style={{ color: 'rgba(255,255,255,0.92)', textDecoration: 'underline' }}>Impressum</a>
-              {' '}|{' '}
-              <a href="https://qm-guru.de/sonstiges/datenschutz/" target="_blank" rel="noopener" style={{ color: 'rgba(255,255,255,0.92)', textDecoration: 'underline' }}>Datenschutz</a>
-            </p>
-          </div>
+          {!isEmbed && (
+            <div style={{ textAlign: 'center', marginTop: '60px', color: 'white', fontSize: '14px', opacity: 0.9 }}>
+              <p style={{ margin: '0 0 8px 0' }}>
+                <strong>QMberater.info</strong>
+              </p>
+              <p style={{ margin: '10px 0 0 0', fontSize: '13px' }}>
+                <a href="/impressum" style={{ color: 'rgba(255,255,255,0.92)', textDecoration: 'underline' }}>Impressum</a>
+                {' '}|{' '}
+                <a href="/datenschutz" style={{ color: 'rgba(255,255,255,0.92)', textDecoration: 'underline' }}>Datenschutz</a>
+              </p>
+            </div>
+          )}
 
         </div>
       </div>

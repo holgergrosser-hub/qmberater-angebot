@@ -19,7 +19,7 @@ User-agent: Bingbot
 Allow: /
 
 # Sitemap location
-Sitemap: https://angebote.qm-guru.de/sitemap.xml
+Sitemap: https://qmberater.info/sitemap.xml
 
 # Crawl-delay (optional, only if needed)
 # Crawl-delay: 10

@@ -1,9 +1,9 @@
 {
-  "name": "qm-guru-iso9001-angebote",
+  "name": "qmberater-angebot",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "QM-Guru ISO 9001 Angebots-System mit automatisierter E-Mail-Automation",
+  "description": "QMberater.info Angebots-Flow: Paket wählen → Unternehmensdaten → PDF-Angebot anfordern",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

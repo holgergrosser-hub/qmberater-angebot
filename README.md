@@ -1,1 +1,3 @@
-# qm-guru-iso9001system, 1
+# qmberater-angebot
+
+Kleiner Flow: Paket auswählen → Unternehmensdaten eingeben → Beratungsangebot als PDF anfordern.

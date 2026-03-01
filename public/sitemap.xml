@@ -5,25 +5,25 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
     
-    <!-- Homepage / Main Calculator Page -->
+    <!-- Homepage / Main Offer Page -->
     <url>
-        <loc>https://angebote.qm-guru.de/</loc>
-        <lastmod>2026-01-30</lastmod>
+        <loc>https://qmberater.info/</loc>
+        <lastmod>2026-03-01</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
 
     <!-- Legal Pages -->
     <url>
-        <loc>https://angebote.qm-guru.de/impressum</loc>
-        <lastmod>2026-01-30</lastmod>
+        <loc>https://qmberater.info/impressum</loc>
+        <lastmod>2026-03-01</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
     
     <url>
-        <loc>https://angebote.qm-guru.de/datenschutz</loc>
-        <lastmod>2026-01-30</lastmod>
+        <loc>https://qmberater.info/datenschutz</loc>
+        <lastmod>2026-03-01</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
