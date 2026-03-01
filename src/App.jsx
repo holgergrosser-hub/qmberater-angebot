@@ -492,7 +492,10 @@ export default function App() {
                       color: pkg.accent,
                       fontSize: '28px',
                       fontWeight: '700',
-                      marginBottom: '8px'
+                      marginBottom: '8px',
+                      hyphens: 'none',
+                      wordBreak: 'normal',
+                      overflowWrap: 'normal'
                     }}>
                       {pkg.name}
                     </div>
