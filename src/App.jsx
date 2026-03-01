@@ -14,8 +14,8 @@ const PACKAGES = [
     basePrice: 3500,
     hours: '20-30',
     features: [
-      'QM-System-Grundstruktur (Prozesse & Dokumentation) – schnell umsetzbar',
-      'Ideal für Ein-Personen-Betriebe und kleine Partnerschaften'
+      'QM-System-Grundstruktur: Prozesse & schlanke Dokumentation',
+      'Ideal für Ein-Personen-Betriebe & kleine Partnerschaften; Fördermöglichkeiten prüfen (auf Wunsch)'
     ],
     accent: '#03468f',
     popular: false
@@ -27,8 +27,8 @@ const PACKAGES = [
     basePrice: 4500,
     hours: '30-40',
     features: [
-      'Aufbau QM-System inkl. Verantwortlichkeiten & Kernprozesse',
-      'Skalierbare Struktur für weiteres Wachstum'
+      'QM-System-Aufbau: Verantwortlichkeiten, Kernprozesse & schlanke Dokumentation',
+      'Skalierbar für Wachstum; Fördermöglichkeiten prüfen (auf Wunsch)'
     ],
     accent: '#c9a027',
     popular: false
@@ -40,8 +40,8 @@ const PACKAGES = [
     basePrice: 7500,
     hours: '40-70',
     features: [
-      'QM-System mit mehreren Prozess-Ebenen schlank dokumentiert',
-      'Abteilungsübergreifende Abstimmung & Umsetzung'
+      'Mehrstufiges QM-System mit schlanker Dokumentation',
+      'Abteilungsübergreifende Umsetzung; Fördermöglichkeiten prüfen (auf Wunsch)'
     ],
     accent: '#102942',
     popular: false
@@ -54,8 +54,8 @@ const PACKAGES = [
     basePrice: 12000,
     hours: '70-90',
     features: [
-      'QM-System-Aufbau für mehrere Bereiche',
-      'Koordination vieler Schnittstellen'
+      'QM-System-Aufbau für mehrere Bereiche mit schlanker Dokumentation',
+      'Koordination vieler Schnittstellen; Fördermöglichkeiten prüfen (auf Wunsch)'
     ],
     accent: '#03468f',
     popular: false
