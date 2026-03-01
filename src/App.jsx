@@ -440,6 +440,14 @@ export default function App() {
 
             <div style={{ textAlign: 'center' }}>
               <div style={{
+                fontSize: '14px',
+                color: BRAND.text,
+                opacity: 0.95,
+                marginBottom: '10px'
+              }}>
+                Paket wählen • Unternehmensdaten eingeben • Beratungsangebot als PDF erhalten
+              </div>
+              <div style={{
                 fontSize: 'clamp(22px, 3.4vw, 36px)',
                 fontWeight: '900',
                 color: BRAND.heading,
@@ -447,13 +455,6 @@ export default function App() {
                 marginBottom: '10px'
               }}>
                 QM-System aufbauen – Angebot in 3 Schritten
-              </div>
-              <div style={{
-                fontSize: '14px',
-                color: BRAND.text,
-                opacity: 0.95
-              }}>
-                Paket wählen • Unternehmensdaten eingeben • Beratungsangebot als PDF erhalten
               </div>
             </div>
           </div>
