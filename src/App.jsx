@@ -437,17 +437,6 @@ export default function App() {
                 </span>
               </div>
             </div>
-
-            <div style={{ textAlign: 'center' }}>
-              <div style={{
-                fontSize: '14px',
-                color: BRAND.text,
-                opacity: 0.95,
-                marginBottom: '10px'
-              }}>
-                Paket wählen • Unternehmensdaten eingeben • Beratungsangebot als PDF erhalten
-              </div>
-            </div>
           </div>
 
           {/* Package Cards */}
