@@ -27,7 +27,7 @@ const PACKAGES = [
     basePrice: 4500,
     hours: '30-40',
     features: [
-      'Aufbau QM-System inkl. Rollen, Verantwortlichkeiten & Kernprozesse',
+      'Aufbau QM-System inkl. Verantwortlichkeiten & Kernprozesse',
       'Skalierbare Struktur für weiteres Wachstum'
     ],
     accent: '#c9a027',
@@ -40,7 +40,7 @@ const PACKAGES = [
     basePrice: 7500,
     hours: '40-70',
     features: [
-      'QM-System mit mehreren Prozess-Ebenen professionell dokumentiert',
+      'QM-System mit mehreren Prozess-Ebenen schlank dokumentiert',
       'Abteilungsübergreifende Abstimmung & Umsetzung'
     ],
     accent: '#102942',
@@ -54,8 +54,8 @@ const PACKAGES = [
     basePrice: 12000,
     hours: '70-90',
     features: [
-      'QM-System-Aufbau für mehrere Standorte oder Geschäftsbereiche',
-      'Koordination vieler Stakeholder & Schnittstellen'
+      'QM-System-Aufbau für mehrere Bereiche',
+      'Koordination vieler Schnittstellen'
     ],
     accent: '#03468f',
     popular: false
