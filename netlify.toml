@@ -1,0 +1,68 @@
+[build]
+  command = "npm install && npm run netlify:build"
+  publish = "dist"
+
+# Headers für Performance & Sicherheit
+[[headers]]
+  for = "/*"
+  [headers.values]
+  Content-Security-Policy = "frame-ancestors 'self' https://qmberater.info https://www.qmberater.info https://qm-guru.de https://www.qm-guru.de https://*.qm-guru.de https://iso9001.info https://www.iso9001.info https://*.iso9001.info;"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Link = '''
+    <https://fonts.googleapis.com>; rel=preconnect,
+    <https://fonts.gstatic.com>; rel=preconnect; crossorigin
+    '''
+
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true

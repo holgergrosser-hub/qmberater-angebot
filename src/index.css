@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --qm-primary: #03468f;
+  --qm-heading: #102942;
+  --qm-text: #333e4b;
+  --qm-button: #102942;
+  --qm-accent-500: #c9a027;
+  --qm-accent-200: #f6efdb;
+  --qm-bg: #fdf9f3;
+  --qm-border: rgba(16, 41, 66, 0.14);
+  --qm-shadow: 0 10px 40px rgba(16, 41, 66, 0.12);
+  --qm-radius: 16px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--qm-text);
+  background: var(--qm-bg);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Simple form focus styling (used by React page) */
+.qm-field {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 14px;
+  border: 2px solid rgba(16, 41, 66, 0.18);
+  border-radius: 10px;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: white;
+}
+
+.qm-field:focus {
+  outline: none;
+  border-color: var(--qm-primary);
+  box-shadow: 0 0 0 4px rgba(3, 70, 143, 0.15);
+}
+
+.qm-card {
+  background: white;
+  border-radius: var(--qm-radius);
+  box-shadow: var(--qm-shadow);
+}

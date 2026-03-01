@@ -1,0 +1,25 @@
+# robots.txt
+
+User-agent: *
+Allow: /
+
+# Disallow admin/temp areas (if any)
+Disallow: /admin/
+Disallow: /temp/
+Disallow: /api/
+
+# Allow important crawlers full access
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap location
+Sitemap: https://angebote.qm-guru.de/sitemap.xml
+
+# Crawl-delay (optional, only if needed)
+# Crawl-delay: 10
