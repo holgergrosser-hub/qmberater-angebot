@@ -338,6 +338,126 @@ export default function App() {
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
 
+          {/* Steps + Title (embed-friendly) */}
+          <div style={{
+            background: 'white',
+            borderRadius: '16px',
+            padding: '24px',
+            boxShadow: BRAND.shadow,
+            marginBottom: '24px',
+            border: `1px solid ${BRAND.border}`
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '12px',
+              flexWrap: 'wrap',
+              marginBottom: '18px'
+            }}>
+              {/* Step 1 */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div style={{
+                  width: '34px',
+                  height: '34px',
+                  borderRadius: '50%',
+                  background: selectedPackage ? '#48bb78' : 'rgba(16, 41, 66, 0.08)',
+                  color: selectedPackage ? 'white' : BRAND.heading,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontWeight: '900',
+                  fontSize: '14px',
+                  transition: 'all 0.2s'
+                }}>
+                  {selectedPackage ? <CheckCircle2 size={18} /> : '1'}
+                </div>
+                <span style={{
+                  color: BRAND.heading,
+                  fontWeight: selectedPackage ? '900' : '700',
+                  fontSize: '14px'
+                }}>
+                  Paket wählen
+                </span>
+              </div>
+
+              <div style={{ width: '52px', height: '2px', background: selectedPackage ? '#48bb78' : 'rgba(16, 41, 66, 0.18)' }} />
+
+              {/* Step 2 */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div style={{
+                  width: '34px',
+                  height: '34px',
+                  borderRadius: '50%',
+                  background: isFormComplete ? '#48bb78' : 'rgba(16, 41, 66, 0.08)',
+                  color: isFormComplete ? 'white' : BRAND.heading,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontWeight: '900',
+                  fontSize: '14px',
+                  transition: 'all 0.2s'
+                }}>
+                  {isFormComplete ? <CheckCircle2 size={18} /> : '2'}
+                </div>
+                <span style={{
+                  color: BRAND.heading,
+                  fontWeight: isFormComplete ? '900' : '700',
+                  fontSize: '14px'
+                }}>
+                  Formular ausfüllen
+                </span>
+              </div>
+
+              <div style={{ width: '52px', height: '2px', background: isFormComplete ? '#48bb78' : 'rgba(16, 41, 66, 0.18)' }} />
+
+              {/* Step 3 */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div style={{
+                  width: '34px',
+                  height: '34px',
+                  borderRadius: '50%',
+                  background: status === 'success' ? '#48bb78' : 'rgba(16, 41, 66, 0.08)',
+                  color: status === 'success' ? 'white' : BRAND.heading,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontWeight: '900',
+                  fontSize: '14px',
+                  transition: 'all 0.2s'
+                }}>
+                  {status === 'success' ? <CheckCircle2 size={18} /> : '3'}
+                </div>
+                <span style={{
+                  color: BRAND.heading,
+                  fontWeight: status === 'success' ? '900' : '700',
+                  fontSize: '14px'
+                }}>
+                  Angebot erhalten
+                </span>
+              </div>
+            </div>
+
+            <div style={{ textAlign: 'center' }}>
+              <div style={{
+                fontSize: 'clamp(22px, 3.4vw, 36px)',
+                fontWeight: '900',
+                color: BRAND.heading,
+                lineHeight: '1.15',
+                marginBottom: '10px'
+              }}>
+                QM-System aufbauen – Angebot in 3 Schritten
+              </div>
+              <div style={{
+                fontSize: '14px',
+                color: BRAND.text,
+                opacity: 0.95
+              }}>
+                Paket wählen • Unternehmensdaten eingeben • Beratungsangebot als PDF erhalten
+              </div>
+            </div>
+          </div>
+
           {/* Package Cards */}
           <div id="pakete" style={{ marginBottom: '60px' }}>
             <h2 style={{ fontSize: '32px', fontWeight: '800', textAlign: 'center', marginBottom: '18px', color: 'white' }}>
