@@ -8,8 +8,8 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzJan8Xcebhr2upSMgLV
 const PACKAGES = [
   {
     id: 'kleinbetriebe',
-     name: 'Kleinere Betriebe',
-    subtitle: 'Kleinbetriebe & Inhaber (0, 1-2 Mitarbeiter)',
+    name: 'Kleinbetriebe',
+    subtitle: '0-2 Mitarbeiter',
     basePrice: 3500,
     hours: '20-30',
     features: [
@@ -21,8 +21,8 @@ const PACKAGES = [
   },
   {
     id: 'wachsende-teams',
-    name: 'Wachsende Teams',
-    subtitle: 'Wachsende Teams (3-10 Mitarbeiter)',
+    name: 'Mittlere Betriebe',
+    subtitle: '3-10 Mitarbeiter',
     basePrice: 4500,
     hours: '30-40',
     features: [
@@ -34,8 +34,8 @@ const PACKAGES = [
   },
   {
     id: 'etablierte-unternehmen',
-    name: 'Etablierte Unternehmen',
-    subtitle: 'Etablierte Unternehmen (11-50 Mitarbeiter)',
+    name: 'Mittelständische Unternehmen',
+    subtitle: '11-50 Mitarbeiter',
     basePrice: 7500,
     hours: '40-70',
     features: [
@@ -47,8 +47,8 @@ const PACKAGES = [
   },
   {
     id: 'grosse-strukturen',
-    name: 'Große Strukturen',
-    subtitle: 'Große Strukturen (51-150 Mitarbeiter)',
+    name: 'Großbetriebe',
+    subtitle: '51-150 Mitarbeiter',
     basePrice: 12000,
     hours: '70-90',
     features: [
