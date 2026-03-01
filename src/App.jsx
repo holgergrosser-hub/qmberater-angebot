@@ -8,7 +8,8 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzJan8Xcebhr2upSMgLV
 const PACKAGES = [
   {
     id: 'kleinbetriebe',
-    name: 'Kleinbetriebe',
+    name: 'Klein-\nbetriebe',
+    submitName: 'Kleinbetriebe',
     subtitle: '0-2 Mitarbeiter',
     basePrice: 3500,
     hours: '20-30',
@@ -47,7 +48,8 @@ const PACKAGES = [
   },
   {
     id: 'grosse-strukturen',
-    name: 'Großbetriebe',
+    name: 'Groß-\nbetriebe',
+    submitName: 'Großbetriebe',
     subtitle: '51-150 Mitarbeiter',
     basePrice: 12000,
     hours: '70-90',
@@ -237,7 +239,7 @@ export default function App() {
       const normsText = getNormsText();
       
       const formEncoded = new URLSearchParams();
-      formEncoded.append('paket', selectedPackage.name);
+      formEncoded.append('paket', selectedPackage.submitName ?? selectedPackage.name);
       formEncoded.append('firma', formData.firma.trim());
       formEncoded.append('ansprechpartner', formData.ansprechpartner.trim());
       formEncoded.append('email', formData.email.trim());
@@ -495,7 +497,8 @@ export default function App() {
                       marginBottom: '8px',
                       hyphens: 'none',
                       wordBreak: 'normal',
-                      overflowWrap: 'normal'
+                      overflowWrap: 'normal',
+                      whiteSpace: 'pre-line'
                     }}>
                       {pkg.name}
                     </div>
