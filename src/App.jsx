@@ -405,7 +405,7 @@ export default function App() {
                   fontWeight: isFormComplete ? '900' : '700',
                   fontSize: '14px'
                 }}>
-                  Formular ausfüllen
+                  Unternehmensdaten eingeben
                 </span>
               </div>
 
@@ -433,7 +433,7 @@ export default function App() {
                   fontWeight: status === 'success' ? '900' : '700',
                   fontSize: '14px'
                 }}>
-                  Angebot erhalten
+                  Beratungsangebot als PDF erhalten
                 </span>
               </div>
             </div>
@@ -447,24 +447,15 @@ export default function App() {
               }}>
                 Paket wählen • Unternehmensdaten eingeben • Beratungsangebot als PDF erhalten
               </div>
-              <div style={{
-                fontSize: 'clamp(22px, 3.4vw, 36px)',
-                fontWeight: '900',
-                color: BRAND.heading,
-                lineHeight: '1.15',
-                marginBottom: '10px'
-              }}>
-                QM-System aufbauen – Angebot in 3 Schritten
-              </div>
             </div>
           </div>
 
           {/* Package Cards */}
           <div id="pakete" style={{ marginBottom: '60px' }}>
-            <h2 style={{ fontSize: '32px', fontWeight: '800', textAlign: 'center', marginBottom: '18px', color: 'white' }}>
+            <h2 style={{ fontSize: '32px', fontWeight: '800', textAlign: 'center', marginBottom: '18px', color: BRAND.heading }}>
               Wählen Sie Ihr Paket für den QM-System-Aufbau
             </h2>
-            <div style={{ textAlign: 'center', color: 'rgba(255,255,255,0.92)', fontSize: '14px', marginBottom: '22px' }}>
+            <div style={{ textAlign: 'center', color: BRAND.text, opacity: 0.9, fontSize: '14px', marginBottom: '22px' }}>
               Preis & Projektstunden passen sich automatisch an (je nach Normen).
             </div>
             <div style={{ 
