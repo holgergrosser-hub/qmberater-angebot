@@ -6,6 +6,11 @@ const variant = (process.env.SITE_VARIANT || 'offers').toLowerCase().trim();
 const rootDir = process.cwd();
 const distDir = path.join(rootDir, 'dist');
 
+const isoSiteUrl = (process.env.ISO_SITE_URL || process.env.URL || process.env.DEPLOY_PRIME_URL || 'https://iso-9001-berater-kosten.qm-guru.de')
+  .toString()
+  .trim()
+  .replace(/\/+$/, '');
+
 const today = new Date().toISOString().slice(0, 10);
 
 async function exists(filePath) {
@@ -94,7 +99,7 @@ async function buildIsoLanding() {
     'User-agent: *',
     'Allow: /',
     '',
-    `Sitemap: https://iso-9001-berater-kosten.qm-guru.de/sitemap.xml`,
+    `Sitemap: ${isoSiteUrl}/sitemap.xml`,
     ''
   ].join('\n');
   await fs.writeFile(path.join(distDir, 'robots.txt'), robots, 'utf8');
@@ -102,19 +107,19 @@ async function buildIsoLanding() {
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n` +
     `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
     `  <url>\n` +
-    `    <loc>https://iso-9001-berater-kosten.qm-guru.de/</loc>\n` +
+    `    <loc>${isoSiteUrl}/</loc>\n` +
     `    <lastmod>${today}</lastmod>\n` +
     `    <changefreq>monthly</changefreq>\n` +
     `    <priority>1.0</priority>\n` +
     `  </url>\n` +
     `  <url>\n` +
-    `    <loc>https://iso-9001-berater-kosten.qm-guru.de/impressum</loc>\n` +
+    `    <loc>${isoSiteUrl}/impressum</loc>\n` +
     `    <lastmod>${today}</lastmod>\n` +
     `    <changefreq>yearly</changefreq>\n` +
     `    <priority>0.3</priority>\n` +
     `  </url>\n` +
     `  <url>\n` +
-    `    <loc>https://iso-9001-berater-kosten.qm-guru.de/datenschutz</loc>\n` +
+    `    <loc>${isoSiteUrl}/datenschutz</loc>\n` +
     `    <lastmod>${today}</lastmod>\n` +
     `    <changefreq>yearly</changefreq>\n` +
     `    <priority>0.3</priority>\n` +

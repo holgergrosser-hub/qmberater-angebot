@@ -2,6 +2,10 @@
   command = "npm install && npm run netlify:build"
   publish = "dist"
 
+[context.production.environment]
+  SITE_VARIANT = "iso"
+  ISO_SITE_URL = "https://angebot.qmberater.info"
+
 # Headers für Performance & Sicherheit
 [[headers]]
   for = "/*"

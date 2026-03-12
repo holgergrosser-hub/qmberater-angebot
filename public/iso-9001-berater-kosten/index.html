@@ -1,0 +1,151 @@
+﻿<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ISO 9001 Angebot – kostenlos & sofort</title>
+  <meta name="description" content="ISO 9001 Angebot anfordern: Paket wählen und E-Mail eintragen – Angebot als PDF per E-Mail erhalten." />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <style>
+    :root { --bg:#fdf9f3; --card:#fff; --text:#333e4b; --head:#102942; --primary:#03468f; --border: rgba(16,41,66,.14); }
+    *{ box-sizing:border-box; }
+    body{ margin:0; font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:var(--text); padding:40px 14px; }
+    .wrap{ max-width:720px; margin:0 auto; }
+    h1{ margin:0 0 8px; color:var(--head); font-size:clamp(26px,4vw,40px); line-height:1.15; }
+    h1 em{ font-style:normal; color:var(--primary); }
+    p{ margin:0 0 18px; line-height:1.6; }
+    .card{ background:var(--card); border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:0 10px 40px rgba(16,41,66,.12); }
+    .bar{ background:var(--head); color:#fff; padding:14px 18px; font-weight:700; }
+    .inner{ padding:18px; }
+    .grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    label{ display:block; font-weight:700; color:var(--head); margin:0 0 6px; font-size:13px; }
+    input, select{ width:100%; padding:12px 12px; border:2px solid rgba(16,41,66,.18); border-radius:10px; font-size:15px; }
+    input:focus, select:focus{ outline:none; border-color:var(--primary); box-shadow:0 0 0 4px rgba(3,70,143,.12); }
+    .full{ grid-column: 1 / -1; }
+    .err{ display:none; margin:0 0 12px; padding:10px 12px; border:2px solid #fc8181; background:#fff5f5; border-radius:12px; color:#c53030; }
+    .err.show{ display:block; }
+    button{ width:100%; border:0; border-radius:12px; padding:16px; background:var(--head); color:#fff; font-weight:800; font-size:16px; cursor:pointer; }
+    button:disabled{ opacity:.6; cursor:not-allowed; }
+    .muted{ opacity:.85; font-size:12px; }
+    .links{ margin-top:12px; text-align:center; font-size:12px; }
+    .links a{ color:var(--primary); text-decoration:none; font-weight:700; }
+    .links a:hover{ text-decoration:underline; }
+    @media (max-width: 640px){ .grid{ grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>In 1–2 Monaten<br><em>ISO-zertifiziert.</em></h1>
+    <p>Paket wählen, Daten eingeben – Ihr Angebot kommt sofort per E-Mail. Kein Gespräch vorher nötig.</p>
+
+    <div class="card">
+      <div class="bar">Sie zahlen erst, wenn Sie das Zertifikat in der Hand halten.</div>
+      <div class="inner">
+        <div id="err" class="err" role="alert" aria-live="assertive"></div>
+        <div class="grid" style="margin-bottom:14px">
+          <div class="full">
+            <label for="paket">Paket</label>
+            <select id="paket">
+              <option value="Kleinbetriebe" data-price="3500" data-hours="20-30">Kleinbetrieb (bis 2 MA) – 3.500 €</option>
+              <option value="Mittlere Betriebe" data-price="4500" data-hours="30-40" selected>Mittlerer Betrieb (3–10 MA) – 4.500 €</option>
+              <option value="Mittelständische Unternehmen" data-price="7500" data-hours="40-70">Mittelstand (11–50 MA) – 7.500 €</option>
+            </select>
+            <div class="muted">Norm: ISO 9001:2015</div>
+          </div>
+          <div>
+            <label for="firma">Firmenname *</label>
+            <input id="firma" autocomplete="organization" />
+          </div>
+          <div>
+            <label for="ansprechpartner">Ansprechpartner *</label>
+            <input id="ansprechpartner" autocomplete="name" />
+          </div>
+          <div class="full">
+            <label for="email">E-Mail *</label>
+            <input id="email" type="email" autocomplete="email" />
+            <div class="muted">Ihr Angebot als PDF – direkt in Ihrem Postfach</div>
+          </div>
+          <div class="full">
+            <label for="telefon">Telefon (optional)</label>
+            <input id="telefon" type="tel" autocomplete="tel" />
+          </div>
+        </div>
+
+        <button id="btn" type="button">Jetzt Angebot anfordern – kostenlos</button>
+        <div class="links"><a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzJan8Xcebhr2upSMgLVcowOzGcffH90hMTvV4ebfmmwkvXPadSoK-erUKW5NeP83vs/exec';
+    const err = document.getElementById('err');
+    const btn = document.getElementById('btn');
+
+    function showErr(msg){ err.textContent = msg; err.classList.add('show'); }
+    function clearErr(){ err.textContent=''; err.classList.remove('show'); }
+
+    async function postToScript(params){
+      try{
+        const r = await fetch(SCRIPT_URL, { method:'POST', mode:'cors', headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}, body: params.toString() });
+        if(!r.ok) throw new Error('HTTP ' + r.status);
+        return true;
+      }catch(e){
+        await fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}, body: params.toString() });
+        return true;
+      }
+    }
+
+    btn.addEventListener('click', async () => {
+      clearErr();
+      const paketEl = document.getElementById('paket');
+      const firma = document.getElementById('firma').value.trim();
+      const ansprechpartner = document.getElementById('ansprechpartner').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const telefon = document.getElementById('telefon').value.trim();
+
+      if(!firma || !ansprechpartner || !email){
+        showErr('Bitte füllen Sie alle Pflichtfelder aus (Firma, Ansprechpartner, E-Mail).');
+        return;
+      }
+
+      const selected = paketEl.options[paketEl.selectedIndex];
+      const preis = selected.getAttribute('data-price') || '4500';
+      const stunden = selected.getAttribute('data-hours') || '30-40';
+
+      btn.disabled = true;
+      btn.textContent = 'Wird verarbeitet…';
+
+      try{
+        const p = new URLSearchParams();
+        p.append('paket', paketEl.value);
+        p.append('firma', firma);
+        p.append('ansprechpartner', ansprechpartner);
+        p.append('email', email);
+        p.append('telefon', telefon || 'nicht angegeben');
+
+        p.append('norm', 'ISO 9001:2015');
+        p.append('norms', 'ISO 9001:2015');
+        p.append('normCount', '1');
+        p.append('normInfo', '1 Norm');
+
+        p.append('preis', String(preis));
+        p.append('kosten', String(preis));
+        p.append('stunden', String(stunden));
+        p.append('geltungsbereich', 'Nach Vereinbarung');
+        p.append('fragen', 'keine');
+
+        await postToScript(p);
+        btn.textContent = 'Anfrage gesendet';
+      }catch(e){
+        console.error(e);
+        btn.disabled = false;
+        btn.textContent = 'Jetzt Angebot anfordern – kostenlos';
+        showErr('Fehler beim Versenden. Bitte versuchen Sie es erneut.');
+      }
+    });
+
+    ['firma','ansprechpartner','email','telefon'].forEach(id => document.getElementById(id).addEventListener('input', clearErr));
+  </script>
+</body>
+</html>
