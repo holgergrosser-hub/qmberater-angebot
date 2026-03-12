@@ -226,7 +226,7 @@ export default function App() {
         </div>
         <h1 className="qm-h1">
           In 1–2 Monaten<br />
-          <em>ISO-zertifiziert.</em>
+          <em>ISO 9001-zertifiziert.</em>
         </h1>
         <p className="qm-lead">
           Paket wählen, Daten eingeben – Ihr Angebot kommt sofort per E-Mail. Kein Gespräch vorher nötig.
