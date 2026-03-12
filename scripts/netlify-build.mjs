@@ -73,7 +73,7 @@ async function buildIsoLanding() {
   );
 
   // Shared assets
-  for (const asset of ['favicon.svg', 'qm-guru-logo-v1.svg', 'grosser-logo-v1.svg']) {
+  for (const asset of ['favicon.svg', 'qm-guru-logo-v1.svg', 'grosser-logo-v1.svg', 'holger-grosser-qm-guru-web.webp']) {
     const src = path.join(rootDir, 'public', asset);
     if (await exists(src)) {
       await copyFile(src, path.join(distDir, asset));

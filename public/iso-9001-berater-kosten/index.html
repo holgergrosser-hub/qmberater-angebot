@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
@@ -32,6 +32,16 @@ body {
   color: #1A1A2E;
   min-height: 100vh;
   padding: 48px 16px 80px;
+}
+
+.avatar-img {
+  width: 52px;
+  height: 52px;
+  border-radius: 9999px;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
+  background: var(--navy);
 }
 
 /* ── HEADER ── */
@@ -354,7 +364,7 @@ body {
 
 <div class="header">
   <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:20px;">
-    <div style="width:52px;height:52px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:white;flex-shrink:0;">HG</div>
+    <img class="avatar-img" src="/holger-grosser-qm-guru-web.webp" alt="Holger Grosser">
     <div style="text-align:left;">
       <div style="font-size:15px;font-weight:700;color:var(--navy);">Holger Grosser</div>
       <div style="font-size:12px;color:var(--gray);">ISO Lead-Auditor · QM-Berater seit 1994</div>
@@ -384,19 +394,16 @@ body {
       <div class="pkg-name">Kleinbetrieb</div>
       <div class="pkg-sub">Selbstständig oder bis 2 Mitarbeiter</div>
       <div class="pkg-price">3.500<span>€</span></div>
-      <div class="pkg-hours">Projektzeiten: 20-30 Stunden</div>
 </div>
     <div class="pkg selected" data-pkg="mittel" data-base="4500" data-hours="30-40" data-submit="Mittlere Betriebe" onclick="selectPkg(this)">
       <div class="pkg-name">Mittlerer Betrieb</div>
       <div class="pkg-sub">3–10 Mitarbeiter</div>
       <div class="pkg-price">4.500<span>€</span></div>
-      <div class="pkg-hours">Projektzeiten: 30-40 Stunden</div>
 </div>
     <div class="pkg" data-pkg="gross" data-base="7500" data-hours="40-70" data-submit="Mittelständische Unternehmen" onclick="selectPkg(this)">
       <div class="pkg-name">Mittelstand</div>
       <div class="pkg-sub">11–50 Mitarbeiter</div>
       <div class="pkg-price">7.500<span>€</span></div>
-      <div class="pkg-hours">Projektzeiten: 40-70 Stunden</div>
 </div>
   </div>
 
@@ -460,7 +467,7 @@ body {
   </div>
 
   <div class="footer-links">
-    <a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a>
+    <a href="https://qmberater.info/impressum/">Impressum</a> · <a href="https://qmberater.info/datenschutz/">Datenschutz</a>
   </div>
 
   <div class="success" id="successMsg">
