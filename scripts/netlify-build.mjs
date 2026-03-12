@@ -89,7 +89,9 @@ async function buildIsoLanding() {
   for (const { src, dst } of legalTargets) {
     if (!(await exists(src))) continue;
     const html = await fs.readFile(src, 'utf8');
-    const rewritten = html.replaceAll('https://angebote.qm-guru.de', 'https://iso-9001-berater-kosten.qm-guru.de');
+    const rewritten = html
+      .replaceAll('https://angebote.qm-guru.de', isoSiteUrl)
+      .replaceAll('https://iso-9001-berater-kosten.qm-guru.de', isoSiteUrl);
     await fs.mkdir(path.dirname(dst), { recursive: true });
     await fs.writeFile(dst, rewritten, 'utf8');
   }
